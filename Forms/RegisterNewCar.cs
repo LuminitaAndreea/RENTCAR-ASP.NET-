@@ -28,17 +28,18 @@ namespace Rental
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            string location= textBox5.Text;
             string plate = textBox1.Text;
-            if (context1.Cars.Where(c => c.Plate == plate).FirstOrDefault()!=null)
+            if (context1.Cars.Where(c => c.Plate == plate && c.Location==location).FirstOrDefault()!=null)
             {
-                MyCar = context1.Cars.Where(c => c.Plate == plate).FirstOrDefault();
+                MyCar = context1.Cars.Where(c => c.Plate == plate&&c.Location==location).FirstOrDefault();
                 MyReservation.CarID = MyCar.CarID;
                 MyReservation.Plate = MyCar.Plate;
+                MyReservation.Location = MyCar.Location;
             }
             else 
             {
-                MessageBox.Show("Please insert a valid car plate");
+                MessageBox.Show("Invalid car plate or location!");
                 this.Hide();
                 RegisterNewCar registerNewCar = new RegisterNewCar();
                 registerNewCar.ShowDialog();
@@ -90,9 +91,8 @@ namespace Rental
                 registerNewCar.ShowDialog();
                 this.Close();
             }
-           
-            MyReservation.Location = textBox5.Text;
             
+
             using (var MyDbEntities = new ReservationModel())
             {
                 if (MyReservation.StartDate <= MyReservation.EndDate)

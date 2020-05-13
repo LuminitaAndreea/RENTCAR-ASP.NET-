@@ -16,6 +16,5 @@ namespace Rental.Entities
 
         public string Location { get; set; }
 
-        public int ZIP { get; set; }
     }
 }

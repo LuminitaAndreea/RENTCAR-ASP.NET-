@@ -44,9 +44,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(317, 295);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 17);
+            this.label5.Size = new System.Drawing.Size(62, 17);
             this.label5.TabIndex = 21;
-            this.label5.Text = "ZIP code";
+            this.label5.Text = "Location";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label4

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,7 +16,7 @@ namespace Rental.Forms
 {
     public partial class AvailableCars : Form
     {
-        readonly Entities.Reservation MyReservation = new Entities.Reservation();
+        Models.Reservation MyReservation = new Models.Reservation();
         Models.Car MyCar = new Models.Car();
         private readonly MyDbContext context1 = new MyDbContext();
 
@@ -31,49 +32,40 @@ namespace Rental.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DateTime startdate=Convert.ToDateTime( textBox3.Text);
+            
+            DateTime startdate = Convert.ToDateTime(textBox3.Text);
             DateTime enddate = Convert.ToDateTime(textBox4.Text);
-            string plate = textBox1.Text;
-            string model = textBox2.Text;
-            MyReservation.Location = textBox5.Text; ;
-
-            if (context1.Cars.Where(c => c.Plate == plate && c.Model == model).FirstOrDefault() != null)
+            string location = textBox5.Text;
+            if ((startdate < enddate) ||(startdate<DateTime.Now))
             {
-                MyCar = context1.Cars.Where(c => c.Plate == plate && c.Model == model).FirstOrDefault();
-                MyReservation.CarID = MyCar.CarID;
-                MyReservation.Plate = MyCar.Plate;
+                using (var MyDbEntities = new CarModel())
+                {
+                    if (context1.Reservations.Where(c => c.EndDate > startdate || c.StartDate < enddate ).Any())
+                    { 
+                        MyReservation = context1.Reservations.Where(c => c.StartDate < enddate || c.EndDate > enddate).FirstOrDefault();
+                        dataGridView1.DataSource = context1.Cars.Where(c => c.Location == location && c.CarID != MyReservation.CarID).ToList();
+                      
+                    }
+                        else
+                        {
+                            MessageBox.Show("No car disponible for the date");
+                            this.Hide();
+                            AvailableCars availableCars = new AvailableCars();
+                            availableCars.ShowDialog();
+                            this.Close();
+                        }
+
+                }
             }
             else
             {
-                MessageBox.Show("Please insert a valid car plate and model");
+                MessageBox.Show("Invalid date times");
                 this.Hide();
                 AvailableCars availableCars = new AvailableCars();
                 availableCars.ShowDialog();
                 this.Close();
             }
-
-             using (var MyDbEntities = new ReservationModel())
-                {
-                if (context1.Reservations.Where(c => c.StartDate >= startdate && c.EndDate >= enddate).Any())
-                {
-                    MyReservation.ReservStatsID = 1;
-                   
-                }
-                else
-                {
-                    MessageBox.Show("Please insert a valid date time");
-                    this.Hide();
-                    AvailableCars availableCars = new AvailableCars();
-                    availableCars.ShowDialog();
-                    this.Close();
-                }
-                dataGridView1.DataSource = context1.Reservations.Where(c => c.CarID == MyReservation.CarID && c.Location==MyReservation.Location).ToList();
-            }
-
         }
-            
-        
-
         private void label4_Click(object sender, EventArgs e)
         {
 

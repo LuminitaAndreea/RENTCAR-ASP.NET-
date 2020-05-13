@@ -20,8 +20,6 @@ namespace Rental.Entities
 
         public int CustomerID { get; set; }
 
-        public int ReservStatsID { get; set; }
-
         public DateTime StartDate { get; set; }
 
         public DateTime EndDate { get; set; }

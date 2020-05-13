@@ -15,6 +15,7 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -27,7 +28,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -221,33 +221,9 @@
     <Compile Include="Forms\Welcome.Designer.cs">
       <DependentUpon>Welcome.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202005070932087_initializedb.cs" />
-    <Compile Include="Migrations\202005070932087_initializedb.designer.cs">
-      <DependentUpon>202005070932087_initializedb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202005071025068_1.cs" />
-    <Compile Include="Migrations\202005071025068_1.designer.cs">
-      <DependentUpon>202005071025068_1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202005080736278_2.cs" />
-    <Compile Include="Migrations\202005080736278_2.designer.cs">
-      <DependentUpon>202005080736278_2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202005080846595_4.cs" />
-    <Compile Include="Migrations\202005080846595_4.designer.cs">
-      <DependentUpon>202005080846595_4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202005080851066_5.cs" />
-    <Compile Include="Migrations\202005080851066_5.designer.cs">
-      <DependentUpon>202005080851066_5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202005091029211_6.cs" />
-    <Compile Include="Migrations\202005091029211_6.designer.cs">
-      <DependentUpon>202005091029211_6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202005091035235_7.cs" />
-    <Compile Include="Migrations\202005091035235_7.designer.cs">
-      <DependentUpon>202005091035235_7.cs</DependentUpon>
+    <Compile Include="Migrations\202005121738220_init.cs" />
+    <Compile Include="Migrations\202005121738220_init.designer.cs">
+      <DependentUpon>202005121738220_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Car.cs" />
@@ -256,7 +232,6 @@
     <Compile Include="Models\MyDbContext.cs" />
     <Compile Include="Models\Permission.cs" />
     <Compile Include="Models\Reservation.cs" />
-    <Compile Include="Models\ReservationStatus.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
@@ -282,26 +257,8 @@
     <EmbeddedResource Include="Forms\UpdateCustomer.resx">
       <DependentUpon>UpdateCustomer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005070932087_initializedb.resx">
-      <DependentUpon>202005070932087_initializedb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005071025068_1.resx">
-      <DependentUpon>202005071025068_1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005080736278_2.resx">
-      <DependentUpon>202005080736278_2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005080846595_4.resx">
-      <DependentUpon>202005080846595_4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005080851066_5.resx">
-      <DependentUpon>202005080851066_5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005091029211_6.resx">
-      <DependentUpon>202005091029211_6.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005091035235_7.resx">
-      <DependentUpon>202005091035235_7.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005121738220_init.resx">
+      <DependentUpon>202005121738220_init.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -332,7 +289,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="MyDb.mdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

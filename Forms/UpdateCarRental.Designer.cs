@@ -46,9 +46,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(309, 295);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(31, 17);
+            this.label5.Size = new System.Drawing.Size(62, 17);
             this.label5.TabIndex = 21;
-            this.label5.Text = "City";
+            this.label5.Text = "Location";
             // 
             // label4
             // 

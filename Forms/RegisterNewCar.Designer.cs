@@ -136,9 +136,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(226, 266);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(31, 17);
+            this.label5.Size = new System.Drawing.Size(62, 17);
             this.label5.TabIndex = 10;
-            this.label5.Text = "City";
+            this.label5.Text = "Location";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // RegisterNewCar

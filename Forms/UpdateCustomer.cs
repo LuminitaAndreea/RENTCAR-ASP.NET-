@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -65,8 +66,23 @@ namespace Rental.Forms
         {
             MyCustomer.CustomerID = Convert.ToInt32(textBox2.Text);
             MyCustomer.Name = textBox3.Text;
-            MyCustomer.BirthDate = Convert.ToDateTime(textBox4.Text);
-            MyCustomer.ZIP = Convert.ToInt32(textBox5.Text);
+            DateTime dt;
+            string[] formats = { "yyyy-MM-dd" };
+            if (!DateTime.TryParseExact(textBox4.Text, formats,
+                            System.Globalization.CultureInfo.InvariantCulture,
+                            DateTimeStyles.None, out dt))
+            {
+                MyCustomer.BirthDate = Convert.ToDateTime(textBox3.Text);
+            }
+            else
+            {
+                MessageBox.Show("Please insert a valid birthday");
+                this.Hide();
+                RegisterNewCar registerNewCar = new RegisterNewCar();
+                registerNewCar.ShowDialog();
+                this.Close();
+            }
+            MyCustomer.Location = textBox5.Text;
 
             using (var MyDbEntities = new CustomerModel())
             {

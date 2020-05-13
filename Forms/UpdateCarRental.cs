@@ -87,7 +87,17 @@ namespace Rental.Forms
                 registerNewCar.ShowDialog();
                 this.Close();
             }
+            if (Convert.ToDateTime(textBox4) < Convert.ToDateTime(textBox3))
+            {
+                MessageBox.Show("Please insert a valid date time");
+                this.Hide();
+                RegisterNewCar registerNewCar = new RegisterNewCar();
+                registerNewCar.ShowDialog();
+                this.Close();
+            }
+
             MyReservation.Location = textBox5.Text;
+
             using (var MyDbEntities = new ReservationModel())
             {
                 if (MyReservation.StartDate <= MyReservation.EndDate)

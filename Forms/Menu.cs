@@ -75,18 +75,18 @@ namespace Rental
                 registerNewCar.ShowDialog();
                 this.Close();
             }
-            else if (e.KeyChar == (char)Keys.D3)
+            else if (e.KeyChar == (char)Keys.D2)
             {
                 this.Hide();
-                ListRents listRents = new ListRents();
-                listRents.ShowDialog();
+                UpdateCarRental updateCarRental = new UpdateCarRental();
+                updateCarRental.ShowDialog();
                 this.Close();
             }
             else if (e.KeyChar == (char)Keys.D3)
             {
                 this.Hide();
-                Menu menu = new Menu();
-                menu.ShowDialog();
+                ListRents listRents = new ListRents();
+                listRents.ShowDialog();
                 this.Close();
             }
             else if (e.KeyChar == (char)Keys.D4)

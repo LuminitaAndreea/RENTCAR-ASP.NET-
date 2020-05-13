@@ -17,5 +17,6 @@ namespace Rental.Entities
         public string Model { get; set; }
 
         public string PricePerDay { get; set; }
+        public string Location { get; set; }
     }
 }

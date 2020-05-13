@@ -13,6 +13,6 @@ namespace Rental.Models
         public string Name { get; set; }
         public DateTime BirthDate { get; set; }
         public string Location {get;set;}
-        public int ZIP { get; set; }
+        
     }
 }

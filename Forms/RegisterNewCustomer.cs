@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Rental.Models;
+using System.Globalization;
 
 namespace Rental.Forms
 {
@@ -36,12 +37,26 @@ namespace Rental.Forms
                 this.Close();
             }
             MyCustomer.Name = textBox3.Text;
-            MyCustomer.BirthDate = Convert.ToDateTime(textBox4.Text);
-            if (textBox5.Text != "")
+            DateTime dt;
+            string[] formats = { "yyyy-MM-dd" };
+            if (!DateTime.TryParseExact(textBox4.Text, formats,
+                            System.Globalization.CultureInfo.InvariantCulture,
+                            DateTimeStyles.None, out dt))
             {
-                MyCustomer.ZIP = Convert.ToInt32(textBox5.Text);
+                MyCustomer.BirthDate = Convert.ToDateTime(textBox3.Text);
+            }
+            else
+            {
+                MessageBox.Show("Please insert a valid birthday");
+                this.Hide();
+                RegisterNewCar registerNewCar = new RegisterNewCar();
+                registerNewCar.ShowDialog();
+                this.Close();
             }
             
+            MyCustomer.Location = textBox5.Text;
+
+
             using (var MyDbEntities = new CustomerModel())
             {
                 MyDbEntities.Customers.Add(MyCustomer);

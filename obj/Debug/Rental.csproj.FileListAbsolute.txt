@@ -81,16 +81,10 @@ D:\Rental\Rental\bin\Debug\ru\Microsoft.Data.SqlClient.resources.dll
 D:\Rental\Rental\bin\Debug\zh-Hans\Microsoft.Data.SqlClient.resources.dll
 D:\Rental\Rental\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resources.dll
 D:\Rental\Rental\obj\Debug\Rental.exe.config
-D:\Rental\Rental\obj\Debug\Rental.Migrations.initializedb.resources
-D:\Rental\Rental\obj\Debug\Rental.Migrations._1.resources
-D:\Rental\Rental\obj\Debug\Rental.Migrations._2.resources
-D:\Rental\Rental\obj\Debug\Rental.Migrations._4.resources
-D:\Rental\Rental\obj\Debug\Rental.Migrations._5.resources
 D:\Rental\Rental\obj\Debug\Rental.Forms.UpdateCarRental.resources
 D:\Rental\Rental\obj\Debug\Rental.Forms.ListRents.resources
-D:\Rental\Rental\obj\Debug\Rental.Migrations._6.resources
-D:\Rental\Rental\obj\Debug\Rental.Migrations._7.resources
 D:\Rental\Rental\obj\Debug\Rental.Forms.RegisterNewCustomer.resources
 D:\Rental\Rental\obj\Debug\Rental.Forms.UpdateCustomer.resources
 D:\Rental\Rental\obj\Debug\Rental.Forms.ListCustomers.resources
 D:\Rental\Rental\obj\Debug\Rental.Forms.AvailableCars.resources
+D:\Rental\Rental\obj\Debug\Rental.Migrations.init.resources
