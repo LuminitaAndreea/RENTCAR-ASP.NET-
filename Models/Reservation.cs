@@ -9,8 +9,9 @@ namespace Rental.Models
 {
     class Reservation
     {
-        [Key]public int UserId { get; set; }
-        [Key]public int CarID { get; set; }
+        public int ReservationId { get; set; }
+        public int UserId { get; set; }
+        public int CarID { get; set; }
         public string Plate { get; set; }
         public int CustomerID { get; set; }
         public DateTime StartDate { get; set; }

@@ -95,10 +95,26 @@ namespace Rental
 
             using (var MyDbEntities = new ReservationModel())
             {
-                if (MyReservation.StartDate <= MyReservation.EndDate)
+                if ((MyReservation.StartDate <= MyReservation.EndDate)&&(MyReservation.StartDate>=DateTime.Now))
                 {
-                    MyDbEntities.Reservations.Add(MyReservation);
-                    MyDbEntities.SaveChanges();
+                    if (context1.Reservations.Where(c => c.EndDate < MyReservation.StartDate && c.StartDate > MyReservation.EndDate && c.CarID==MyReservation.CarID).Any())
+                    {
+                        MyDbEntities.Reservations.Add(MyReservation);
+                        MyDbEntities.SaveChanges();
+                    }
+                    else if (context1.Reservations.Where(c=>c.CarID==MyReservation.CarID).Any()==false)
+                    {
+                        MyDbEntities.Reservations.Add(MyReservation);
+                        MyDbEntities.SaveChanges();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please insert other dates for your reservation");
+                        this.Hide();
+                        RegisterNewCar registerNewCar = new RegisterNewCar();
+                        registerNewCar.ShowDialog();
+                        this.Close();
+                    }
                 }
                 else
                 {

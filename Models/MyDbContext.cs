@@ -25,8 +25,7 @@ namespace Rental.Models
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Reservation>()
-            .HasKey(c => new { c.UserId, c.CarID });
+            modelBuilder.Entity<Reservation>().HasKey(c => new { c.ReservationId });
 
             modelBuilder.Entity<Car>().HasKey(c => new { c.CarID });
 

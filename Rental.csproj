@@ -225,6 +225,10 @@
     <Compile Include="Migrations\202005121738220_init.designer.cs">
       <DependentUpon>202005121738220_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005140909291_reservId.cs" />
+    <Compile Include="Migrations\202005140909291_reservId.designer.cs">
+      <DependentUpon>202005140909291_reservId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\Cupon.cs" />
@@ -259,6 +263,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005121738220_init.resx">
       <DependentUpon>202005121738220_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005140909291_reservId.resx">
+      <DependentUpon>202005140909291_reservId.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

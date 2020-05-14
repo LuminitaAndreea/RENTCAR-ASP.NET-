@@ -32,7 +32,6 @@ namespace Rental.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
             DateTime startdate = Convert.ToDateTime(textBox3.Text);
             DateTime enddate = Convert.ToDateTime(textBox4.Text);
             string location = textBox5.Text;
@@ -40,12 +39,12 @@ namespace Rental.Forms
             {
                 using (var MyDbEntities = new CarModel())
                 {
-                    if (context1.Reservations.Where(c => c.EndDate > startdate || c.StartDate < enddate ).Any())
-                    { 
-                        MyReservation = context1.Reservations.Where(c => c.StartDate < enddate || c.EndDate > enddate).FirstOrDefault();
-                        dataGridView1.DataSource = context1.Cars.Where(c => c.Location == location && c.CarID != MyReservation.CarID).ToList();
-                      
+                    if (context1.Reservations.Where(c => c.Location == location).Any())
+                    {
+                        MyReservation= context1.Reservations.Where(c => (c.EndDate >= startdate || c.StartDate <= enddate) && c.Location == location).First();
+                        dataGridView1.DataSource = context1.Cars.Where(c => c.Location == location && c.CarID!=MyReservation.CarID).ToList();
                     }
+                   
                         else
                         {
                             MessageBox.Show("No car disponible for the date");

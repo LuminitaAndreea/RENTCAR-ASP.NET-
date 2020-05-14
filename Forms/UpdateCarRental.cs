@@ -26,12 +26,14 @@ namespace Rental.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string location = textBox5.Text;
             string plate = textBox1.Text;
-            if (context1.Cars.Where(c => c.Plate == plate).FirstOrDefault() != null)
+            if (context1.Cars.Where(c => c.Plate == plate && c.Location == location).FirstOrDefault() != null)
             {
-                MyCar = context1.Cars.Where(c => c.Plate == plate).FirstOrDefault();
+                MyCar = context1.Cars.Where(c => c.Plate == plate && c.Location == location).FirstOrDefault();
                 MyReservation.CarID = MyCar.CarID;
                 MyReservation.Plate = MyCar.Plate;
+                MyReservation.Location = MyCar.Location;
             }
             else
             {
@@ -96,30 +98,41 @@ namespace Rental.Forms
                 this.Close();
             }
 
-            MyReservation.Location = textBox5.Text;
+
 
             using (var MyDbEntities = new ReservationModel())
             {
-                if (MyReservation.StartDate <= MyReservation.EndDate)
+                if ((MyReservation.StartDate <= MyReservation.EndDate) && (MyReservation.StartDate >= DateTime.Now))
                 {
-                    MyDbEntities.Entry(MyReservation).State = System.Data.Entity.EntityState.Modified;
-                    MyDbEntities.SaveChanges();
+                    if (context1.Reservations.Where(c => c.EndDate < MyReservation.StartDate && c.StartDate > MyReservation.EndDate && c.CarID == MyReservation.CarID).Any())
+                    {
+                        MyDbEntities.Entry(MyReservation).State = System.Data.Entity.EntityState.Modified;
+                        MyDbEntities.SaveChanges();
+                    }
+                    else if (context1.Reservations.Where(c => c.CarID == MyReservation.CarID).Any() == false)
+                    {
+                        MyDbEntities.Entry(MyReservation).State = System.Data.Entity.EntityState.Modified;
+                        MyDbEntities.SaveChanges();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please insert valid dates");
+                        this.Hide();
+                        UpdateCarRental updateCarRental = new UpdateCarRental();
+                        updateCarRental.ShowDialog();
+                        this.Close();
+                    }
+
                 }
                 else
                 {
-                    MessageBox.Show("Please insert valid dates");
                     this.Hide();
-                    UpdateCarRental updateCarRental = new UpdateCarRental();
-                    updateCarRental.ShowDialog();
+                    Menu menu = new Menu();
+                    menu.ShowDialog();
                     this.Close();
                 }
             }
-            this.Hide();
-            Menu menu = new Menu();
-            menu.ShowDialog();
-            this.Close();
         }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 

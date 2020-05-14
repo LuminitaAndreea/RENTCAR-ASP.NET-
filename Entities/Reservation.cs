@@ -8,14 +8,9 @@ namespace Rental.Entities
 
     public partial class Reservation
     {
-        [Key]
-        [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int ReservationId { get; set; }
         public int UserId { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int CarID { get; set; }
 
         public int CustomerID { get; set; }

@@ -88,3 +88,4 @@ D:\Rental\Rental\obj\Debug\Rental.Forms.UpdateCustomer.resources
 D:\Rental\Rental\obj\Debug\Rental.Forms.ListCustomers.resources
 D:\Rental\Rental\obj\Debug\Rental.Forms.AvailableCars.resources
 D:\Rental\Rental\obj\Debug\Rental.Migrations.init.resources
+D:\Rental\Rental\obj\Debug\Rental.Migrations.reservId.resources
