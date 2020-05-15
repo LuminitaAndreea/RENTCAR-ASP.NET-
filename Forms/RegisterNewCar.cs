@@ -97,16 +97,13 @@ namespace Rental
             {
                 if ((MyReservation.StartDate <= MyReservation.EndDate)&&(MyReservation.StartDate>=DateTime.Now))
                 {
-                    if (context1.Reservations.Where(c => c.EndDate < MyReservation.StartDate && c.StartDate > MyReservation.EndDate && c.CarID==MyReservation.CarID).Any())
+                    if ((context1.Reservations.Where(c => c.EndDate <Convert.ToDateTime( textBox3.Text )&& c.StartDate > Convert.ToDateTime( textBox4.Text )&& c.ReservationId != MyReservation.ReservationId).Any()) || (context1.Reservations.Where(c => c.ReservationId != MyReservation.ReservationId).Any() == false))
                     {
+                        
                         MyDbEntities.Reservations.Add(MyReservation);
                         MyDbEntities.SaveChanges();
                     }
-                    else if (context1.Reservations.Where(c=>c.CarID==MyReservation.CarID).Any()==false)
-                    {
-                        MyDbEntities.Reservations.Add(MyReservation);
-                        MyDbEntities.SaveChanges();
-                    }
+                    
                     else
                     {
                         MessageBox.Show("Please insert other dates for your reservation");
@@ -179,6 +176,14 @@ namespace Rental
         private void textBox5_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Menu menu = new Menu();
+            menu.ShowDialog();
+            this.Close();
         }
     }
 }

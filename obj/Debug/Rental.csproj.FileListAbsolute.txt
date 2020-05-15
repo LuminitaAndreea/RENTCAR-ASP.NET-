@@ -89,3 +89,6 @@ D:\Rental\Rental\obj\Debug\Rental.Forms.ListCustomers.resources
 D:\Rental\Rental\obj\Debug\Rental.Forms.AvailableCars.resources
 D:\Rental\Rental\obj\Debug\Rental.Migrations.init.resources
 D:\Rental\Rental\obj\Debug\Rental.Migrations.reservId.resources
+D:\Rental\Rental\obj\Debug\Rental.Forms.GoldCustomers.resources
+D:\Rental\Rental\obj\Debug\Rental.Forms.Reports.resources
+D:\Rental\Rental\obj\Debug\Rental.Forms.SilverCustomers.resources

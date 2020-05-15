@@ -61,7 +61,7 @@ namespace Rental
 
         private void Menu_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Escape)
+            if (e.KeyChar == (char)Keys.Back)
             {
                 this.Hide();
                 Menu menu = new Menu();
@@ -118,6 +118,13 @@ namespace Rental
                 this.Close();
             }
             else if (e.KeyChar == (char)Keys.D8)
+            {
+                this.Hide();
+                Reports reports = new Reports();
+                reports.ShowDialog();
+                this.Close();
+            }
+            else if (e.KeyChar == (char)Keys.D9)
             {
                 this.Close();
             }
