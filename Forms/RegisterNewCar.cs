@@ -16,7 +16,7 @@ namespace Rental
 {
     public partial class RegisterNewCar : Form
     {
-        readonly Entities.Reservation MyReservation = new Entities.Reservation();
+        Entities.Reservation MyReservation = new Entities.Reservation();
         Models.Car MyCar = new Models.Car();
         Models.Customer MyCustomer = new Models.Customer();
         private readonly MyDbContext context1 = new MyDbContext();
@@ -30,7 +30,7 @@ namespace Rental
         {
             string location= textBox5.Text;
             string plate = textBox1.Text;
-            if (context1.Cars.Where(c => c.Plate == plate && c.Location==location).FirstOrDefault()!=null)
+            if (context1.Cars.Where(c => c.Plate == plate && c.Location == location).FirstOrDefault() != null)
             {
                 MyCar = context1.Cars.Where(c => c.Plate == plate&&c.Location==location).FirstOrDefault();
                 MyReservation.CarID = MyCar.CarID;
@@ -61,49 +61,26 @@ namespace Rental
                 registerNewCar.ShowDialog();
                 this.Close();
             }
-            DateTime dt;
-            string[] formats = { "yyyy-MM-dd" };
-            if (!DateTime.TryParseExact(textBox3.Text, formats,
-                            System.Globalization.CultureInfo.InvariantCulture,
-                            DateTimeStyles.None, out dt))
-            {
-                MyReservation.StartDate = Convert.ToDateTime(textBox3.Text);
-            }
-            else
-            {
-                MessageBox.Show("Please insert a valid date time");
-                this.Hide();
-                RegisterNewCar registerNewCar = new RegisterNewCar();
-                registerNewCar.ShowDialog();
-                this.Close();
-            }
-            if (!DateTime.TryParseExact(textBox4.Text, formats,
-                            System.Globalization.CultureInfo.InvariantCulture,
-                            DateTimeStyles.None, out dt))
-            {
-                MyReservation.EndDate = Convert.ToDateTime(textBox4.Text);
-            }
-            else
-            {
-                MessageBox.Show("Please insert a valid date time");
-                this.Hide();
-                RegisterNewCar registerNewCar = new RegisterNewCar();
-                registerNewCar.ShowDialog();
-                this.Close();
-            }
             
-
+             MyReservation.StartDate = Convert.ToDateTime(textBox3.Text);
+             MyReservation.EndDate = Convert.ToDateTime(textBox4.Text);
+            
             using (var MyDbEntities = new ReservationModel())
             {
                 if ((MyReservation.StartDate <= MyReservation.EndDate)&&(MyReservation.StartDate>=DateTime.Now))
                 {
-                    if ((context1.Reservations.Where(c => c.EndDate <Convert.ToDateTime( textBox3.Text )&& c.StartDate > Convert.ToDateTime( textBox4.Text )&& c.ReservationId != MyReservation.ReservationId).Any()) || (context1.Reservations.Where(c => c.ReservationId != MyReservation.ReservationId).Any() == false))
+                    if(context1.Reservations.Where(c=>(c.StartDate > MyReservation.EndDate || c.EndDate < MyReservation.StartDate)
+                    && c.Plate == MyReservation.Plate ).Any())
                     {
-                        
                         MyDbEntities.Reservations.Add(MyReservation);
                         MyDbEntities.SaveChanges();
                     }
+                    else if (context1.Reservations.Where(c=>c.Plate==MyReservation.Plate).Any()==false)
+                    {
+                        MyDbEntities.Reservations.Add(MyReservation);
+                        MyDbEntities.SaveChanges();
                     
+                    }
                     else
                     {
                         MessageBox.Show("Please insert other dates for your reservation");

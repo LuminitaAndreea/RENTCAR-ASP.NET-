@@ -14,13 +14,13 @@ namespace Rental.Models
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<MyDbContext, Migrations.Configuration>("MyDbConnectionString"));
         }
-        public DbSet<Car> Cars { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Cupon> Cupons { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Permission> Permissions { get; set; }
-        public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Car> Cars { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

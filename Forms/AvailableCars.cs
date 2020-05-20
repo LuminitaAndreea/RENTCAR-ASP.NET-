@@ -41,8 +41,9 @@ namespace Rental.Forms
                 {
                     if (context1.Reservations.Where(c => c.Location == location).Any())
                     {
-                        MyReservation= context1.Reservations.Where(c => (c.EndDate >= startdate || c.StartDate <= enddate) && c.Location == location).First();
-                        dataGridView1.DataSource = context1.Cars.Where(c => c.Location == location && c.CarID!=MyReservation.CarID).ToList();
+                        MyReservation= context1.Reservations.Where(c => (c.EndDate >= startdate || c.StartDate <= enddate) 
+                        && c.Location == location).First();
+                        dataGridView1.DataSource = context1.Reservations.Where(c => c.Location == location && c.CarID!=MyReservation.CarID).ToList();
                     }
                    
                         else

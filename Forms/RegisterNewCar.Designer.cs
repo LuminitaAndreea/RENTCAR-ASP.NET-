@@ -146,7 +146,7 @@
             // 
             this.button2.Location = new System.Drawing.Point(226, 326);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(50, 23);
+            this.button2.Size = new System.Drawing.Size(60, 23);
             this.button2.TabIndex = 11;
             this.button2.Text = "Back";
             this.button2.UseVisualStyleBackColor = true;
