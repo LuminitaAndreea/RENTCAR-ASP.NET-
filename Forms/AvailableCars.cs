@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -19,52 +20,44 @@ namespace Rental.Forms
         Models.Reservation MyReservation = new Models.Reservation();
         Models.Car MyCar = new Models.Car();
         private readonly MyDbContext context1 = new MyDbContext();
-
+        public string conString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Rental\Rental\MyDb.mdf;Integrated Security=True";
+        
         public AvailableCars()
         {
             InitializeComponent();
         }
-        
+
         private void AvailableCars_Load(object sender, EventArgs e)
         {
-           
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            dataGridView1.DataSource = GetAvailableCarsList();
+        }
+        private DataTable GetAvailableCarsList()
+        {
+            
+            DataTable dataTable = new DataTable();
+            string location = textBox5.Text;
             DateTime startdate = Convert.ToDateTime(textBox3.Text);
             DateTime enddate = Convert.ToDateTime(textBox4.Text);
-            string location = textBox5.Text;
-            if ((startdate < enddate) ||(startdate<DateTime.Now))
+            using (SqlConnection con=new SqlConnection(conString))
             {
-                using (var MyDbEntities = new CarModel())
+                
+                using (SqlCommand cmd=new SqlCommand("SELECT DISTINCT Cars.Plate, Cars.Manufacturer, Cars.Model, Cars.PricePerDay, Cars.Location" +
+                    " FROM Cars JOIN Reservations ON (Cars.CarID = Reservations.CarID AND Reservations.Location ='" + location + "' AND " +
+                    "('" + startdate + "'> Reservations.EndDate OR '" + enddate + "'< Reservations.StartDate)OR(Cars.CarID!=Reservations.CarID AND " +
+                    "Cars.Location='" + location + "')) ", con))
                 {
-                    if (context1.Reservations.Where(c => c.Location == location).Any())
-                    {
-                        MyReservation= context1.Reservations.Where(c => (c.EndDate >= startdate || c.StartDate <= enddate) 
-                        && c.Location == location).First();
-                        dataGridView1.DataSource = context1.Reservations.Where(c => c.Location == location && c.CarID!=MyReservation.CarID).ToList();
-                    }
-                   
-                        else
-                        {
-                            MessageBox.Show("No car disponible for the date");
-                            this.Hide();
-                            AvailableCars availableCars = new AvailableCars();
-                            availableCars.ShowDialog();
-                            this.Close();
-                        }
-
+                    con.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    dataTable.Load(reader);
                 }
             }
-            else
-            {
-                MessageBox.Show("Invalid date times");
-                this.Hide();
-                AvailableCars availableCars = new AvailableCars();
-                availableCars.ShowDialog();
-                this.Close();
-            }
+            return dataTable;
+        
         }
         private void label4_Click(object sender, EventArgs e)
         {
@@ -123,5 +116,11 @@ namespace Rental.Forms
             menu.ShowDialog();
             this.Close();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
+

@@ -119,13 +119,6 @@ namespace Rental
             }
             else if (e.KeyChar == (char)Keys.D8)
             {
-                this.Hide();
-                Reports reports = new Reports();
-                reports.ShowDialog();
-                this.Close();
-            }
-            else if (e.KeyChar == (char)Keys.D9)
-            {
                 this.Close();
             }
             else

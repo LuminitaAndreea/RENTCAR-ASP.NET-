@@ -173,12 +173,6 @@
     <Compile Include="Forms\AvailableCars.Designer.cs">
       <DependentUpon>AvailableCars.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\GoldCustomers.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\GoldCustomers.Designer.cs">
-      <DependentUpon>GoldCustomers.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\ListCustomers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,18 +202,6 @@
     </Compile>
     <Compile Include="Forms\RegisterNewCustomer.Designer.cs">
       <DependentUpon>RegisterNewCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Reports.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Reports.Designer.cs">
-      <DependentUpon>Reports.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\SilverCustomers.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\SilverCustomers.Designer.cs">
-      <DependentUpon>SilverCustomers.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\UpdateCarRental.cs">
       <SubType>Form</SubType>
@@ -261,9 +243,6 @@
     <EmbeddedResource Include="Forms\AvailableCars.resx">
       <DependentUpon>AvailableCars.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\GoldCustomers.resx">
-      <DependentUpon>GoldCustomers.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ListCustomers.resx">
       <DependentUpon>ListCustomers.cs</DependentUpon>
     </EmbeddedResource>
@@ -275,12 +254,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RegisterNewCustomer.resx">
       <DependentUpon>RegisterNewCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Reports.resx">
-      <DependentUpon>Reports.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SilverCustomers.resx">
-      <DependentUpon>SilverCustomers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UpdateCarRental.resx">
       <DependentUpon>UpdateCarRental.cs</DependentUpon>

@@ -82,13 +82,10 @@ D:\Rental\Rental\bin\Debug\zh-Hans\Microsoft.Data.SqlClient.resources.dll
 D:\Rental\Rental\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resources.dll
 D:\Rental\Rental\obj\Debug\Rental.exe.config
 D:\Rental\Rental\obj\Debug\Rental.Forms.UpdateCarRental.resources
-D:\Rental\Rental\obj\Debug\Rental.Forms.ListRents.resources
 D:\Rental\Rental\obj\Debug\Rental.Forms.RegisterNewCustomer.resources
 D:\Rental\Rental\obj\Debug\Rental.Forms.UpdateCustomer.resources
 D:\Rental\Rental\obj\Debug\Rental.Forms.ListCustomers.resources
 D:\Rental\Rental\obj\Debug\Rental.Forms.AvailableCars.resources
 D:\Rental\Rental\obj\Debug\Rental.Migrations.init.resources
 D:\Rental\Rental\obj\Debug\Rental.Migrations.reservId.resources
-D:\Rental\Rental\obj\Debug\Rental.Forms.GoldCustomers.resources
-D:\Rental\Rental\obj\Debug\Rental.Forms.Reports.resources
-D:\Rental\Rental\obj\Debug\Rental.Forms.SilverCustomers.resources
+D:\Rental\Rental\obj\Debug\Rental.Forms.ListRents.resources

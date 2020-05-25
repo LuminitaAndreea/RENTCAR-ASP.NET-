@@ -114,9 +114,9 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(62, 311);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(74, 17);
+            this.label8.Size = new System.Drawing.Size(46, 17);
             this.label8.TabIndex = 7;
-            this.label8.Text = "8.Reports ";
+            this.label8.Text = "8.Quit";
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label9
@@ -124,9 +124,8 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(62, 345);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(46, 17);
+            this.label9.Size = new System.Drawing.Size(0, 17);
             this.label9.TabIndex = 8;
-            this.label9.Text = "9.Quit";
             // 
             // Menu
             // 

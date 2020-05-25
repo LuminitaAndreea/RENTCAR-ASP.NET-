@@ -18,6 +18,11 @@ namespace Rental.Forms
         {
             InitializeComponent();
         }
+
+        private void ListRents_Load(object sender, EventArgs e)
+        {
+            PopGridView();
+        }
         private void PopGridView()
         {
             using (var MyDbEntities = new CustomerModel())
@@ -26,11 +31,6 @@ namespace Rental.Forms
             }
 
         }
-        private void ListCustomers_Load(object sender, EventArgs e)
-        {
-            PopGridView();
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();

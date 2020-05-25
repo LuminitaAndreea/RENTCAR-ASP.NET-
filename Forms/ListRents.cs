@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rental.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Rental.Entities;
 
 namespace Rental.Forms
 {
@@ -19,31 +19,31 @@ namespace Rental.Forms
             InitializeComponent();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        { 
-
-        }
-        private void PopGridView()
+        private void ListRents_Load(object sender, EventArgs e)
         {
-            using(var MyDbEntities=new ReservationModel())
+            PopGridView1();
+        }
+        private void PopGridView1()
+        {
+            using (var MyDbEntities = new ReservationModel())
             {
                 dataGridView1.DataSource = MyDbEntities.Reservations.ToList<Reservation>();
             }
 
         }
-
-        private void ListRents_Load(object sender, EventArgs e)
+        
+        private void button1_Click_1(object sender, EventArgs e)
         {
-            PopGridView();
 
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
             this.Hide();
             Menu menu = new Menu();
             menu.ShowDialog();
             this.Close();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
