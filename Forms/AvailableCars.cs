@@ -43,13 +43,10 @@ namespace Rental.Forms
             string location = textBox5.Text;
             DateTime startdate = Convert.ToDateTime(textBox3.Text);
             DateTime enddate = Convert.ToDateTime(textBox4.Text);
-            using (SqlConnection con=new SqlConnection(conString))
+            using (SqlConnection con = new SqlConnection(conString))
             {
-                
-                using (SqlCommand cmd=new SqlCommand("SELECT DISTINCT Cars.Plate, Cars.Manufacturer, Cars.Model, Cars.PricePerDay, Cars.Location" +
-                    " FROM Cars JOIN Reservations ON (Cars.CarID = Reservations.CarID AND Reservations.Location ='" + location + "' AND " +
-                    "('" + startdate + "'> Reservations.EndDate OR '" + enddate + "'< Reservations.StartDate)OR(Cars.CarID!=Reservations.CarID AND " +
-                    "Cars.Location='" + location + "')) ", con))
+                using (SqlCommand cmd = new SqlCommand("Select * from Cars WHERE Location = '" + location + "' AND CarID NOT IN" +
+                        "(Select CarID FROM Reservations WHERE NOT (StartDate < '" + enddate + "') OR (EndDate > '" + startdate + "'))", con))
                 {
                     con.Open();
                     SqlDataReader reader = cmd.ExecuteReader();
